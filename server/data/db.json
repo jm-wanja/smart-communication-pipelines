@@ -1,0 +1,403 @@
+{
+  "deals": [
+    {
+      "id": "1",
+      "client_id": "1",
+      "title": "Yorkshire Property Portfolio",
+      "type": "retrofit",
+      "region": "Yorkshire",
+      "builder": "Premier Builders",
+      "units": 12,
+      "stage": "bidding",
+      "status": "In Progress",
+      "legal_stage": "Not Started",
+      "projected_exchange_date": "2025-08-15",
+      "projected_completion_date": "2025-10-30",
+      "funds_required": 2500000,
+      "created_at": "2025-06-15T10:30:00.000Z",
+      "updated_at": "2025-06-30T14:15:00.000Z"
+    },
+    {
+      "id": "2",
+      "client_id": "1",
+      "title": "London Apartment Complex",
+      "type": "new_build",
+      "region": "London",
+      "builder": "Metropolitan Developments",
+      "units": 8,
+      "stage": "negotiation",
+      "status": "In Progress",
+      "legal_stage": "Searches In",
+      "projected_exchange_date": "2025-07-25",
+      "projected_completion_date": "2025-09-15",
+      "funds_required": 3200000,
+      "created_at": "2025-06-10T09:45:00.000Z",
+      "updated_at": "2025-06-28T11:20:00.000Z"
+    },
+    {
+      "id": "3",
+      "client_id": "2",
+      "title": "Manchester Townhouse Development",
+      "type": "new_build",
+      "region": "Manchester",
+      "builder": "Northern Constructions",
+      "units": 6,
+      "stage": "legals",
+      "status": "In Progress",
+      "legal_stage": "ROT In",
+      "projected_exchange_date": "2025-07-10",
+      "projected_completion_date": "2025-08-30",
+      "funds_required": 1800000,
+      "created_at": "2025-06-05T14:20:00.000Z",
+      "updated_at": "2025-06-25T16:10:00.000Z"
+    },
+    {
+      "id": "4",
+      "client_id": "2",
+      "title": "Bristol Waterfront Properties",
+      "type": "retrofit",
+      "region": "Bristol",
+      "builder": "Coastal Renovations",
+      "units": 4,
+      "stage": "exchange",
+      "status": "Pending Funds",
+      "legal_stage": "Reviewed",
+      "projected_exchange_date": "2025-07-05",
+      "projected_completion_date": "2025-08-15",
+      "funds_required": 1500000,
+      "created_at": "2025-06-01T11:30:00.000Z",
+      "updated_at": "2025-06-20T13:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "client_id": "3",
+      "title": "Edinburgh Mixed-Use Development",
+      "type": "new_build",
+      "region": "Scotland",
+      "builder": "Highland Constructions",
+      "units": 10,
+      "stage": "bidding",
+      "status": "New",
+      "legal_stage": "Not Started",
+      "projected_exchange_date": "2025-09-20",
+      "projected_completion_date": "2025-12-15",
+      "funds_required": 2800000,
+      "created_at": "2025-06-25T08:45:00.000Z",
+      "updated_at": "2025-06-25T08:45:00.000Z"
+    },
+    {
+      "id": "31494da2-5e95-4239-ac1d-f562fdea248a",
+      "client_id": "3",
+      "title": "New deal",
+      "type": "new_build",
+      "region": "london",
+      "builder": "A new builder",
+      "units": 1,
+      "stage": "bidding",
+      "status": "In Progress",
+      "legal_stage": "Not Started",
+      "projected_exchange_date": "2025-07-03",
+      "projected_completion_date": "2025-07-31",
+      "funds_required": 3000000,
+      "created_at": "2025-07-02T13:09:05.231Z",
+      "updated_at": "2025-07-02T13:09:05.231Z"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "name": "Highbrook Investments",
+      "email": "reports@highbrook.example.com",
+      "report_frequency": "weekly"
+    },
+    {
+      "id": "2",
+      "name": "Cerberus Capital",
+      "email": "updates@cerberus.example.com",
+      "report_frequency": "weekly"
+    },
+    {
+      "id": "3",
+      "name": "Moorfield",
+      "email": "reports@moorfield.example.com",
+      "report_frequency": "weekly"
+    },
+    {
+      "id": "ed558624-7444-4c10-9941-e3eee9ee3a8a",
+      "name": "a tester client",
+      "email": "tester@tester.example.com",
+      "report_frequency": "weekly"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "1",
+      "from_team": "Valuations",
+      "to_team": "Tech",
+      "issue_type": "Improvement",
+      "description": "Need faster loading times on property valuation page",
+      "status": "Pending",
+      "created_at": "2025-06-28T09:30:00.000Z"
+    },
+    {
+      "id": "3e5e6b63-2bd0-412f-b675-522760e3826e",
+      "from_team": "Operations",
+      "to_team": "Product",
+      "issue_type": "Feature",
+      "description": "Feature request: feature request. This would enable new capabilities for users.",
+      "status": "Pending",
+      "created_at": "2025-07-02T13:10:40.447Z"
+    }
+  ],
+  "reports": [
+    {
+      "id": "c198cdd2-6aca-4f9f-ac42-343bae52df98",
+      "client_id": "1",
+      "client_name": "Highbrook Investments",
+      "generated_at": "2025-07-02T13:09:56.231Z",
+      "period": "2025-07-02 - Weekly Report",
+      "stats": {
+        "total_units": 20,
+        "retrofit_units": 12,
+        "new_build_units": 8,
+        "total_deals": 2,
+        "deals_by_stage": [
+          {
+            "stage": "bidding",
+            "count": 1,
+            "deals": [
+              {
+                "id": "1",
+                "client_id": "1",
+                "title": "Yorkshire Property Portfolio",
+                "type": "retrofit",
+                "region": "Yorkshire",
+                "builder": "Premier Builders",
+                "units": 12,
+                "stage": "bidding",
+                "status": "In Progress",
+                "legal_stage": "Not Started",
+                "projected_exchange_date": "2025-08-15",
+                "projected_completion_date": "2025-10-30",
+                "funds_required": 2500000,
+                "created_at": "2025-06-15T10:30:00.000Z",
+                "updated_at": "2025-06-30T14:15:00.000Z"
+              }
+            ]
+          },
+          {
+            "stage": "negotiation",
+            "count": 1,
+            "deals": [
+              {
+                "id": "2",
+                "client_id": "1",
+                "title": "London Apartment Complex",
+                "type": "new_build",
+                "region": "London",
+                "builder": "Metropolitan Developments",
+                "units": 8,
+                "stage": "negotiation",
+                "status": "In Progress",
+                "legal_stage": "Searches In",
+                "projected_exchange_date": "2025-07-25",
+                "projected_completion_date": "2025-09-15",
+                "funds_required": 3200000,
+                "created_at": "2025-06-10T09:45:00.000Z",
+                "updated_at": "2025-06-28T11:20:00.000Z"
+              }
+            ]
+          }
+        ],
+        "total_funds_required": 0
+      }
+    },
+    {
+      "id": "bb0d126f-8bd5-495c-87eb-b547e4d37cf7",
+      "client_id": "1",
+      "client_name": "Highbrook Investments",
+      "generated_at": "2025-07-02T13:09:59.433Z",
+      "period": "2025-07-02 - Weekly Report",
+      "stats": {
+        "total_units": 20,
+        "retrofit_units": 12,
+        "new_build_units": 8,
+        "total_deals": 2,
+        "deals_by_stage": [
+          {
+            "stage": "bidding",
+            "count": 1,
+            "deals": [
+              {
+                "id": "1",
+                "client_id": "1",
+                "title": "Yorkshire Property Portfolio",
+                "type": "retrofit",
+                "region": "Yorkshire",
+                "builder": "Premier Builders",
+                "units": 12,
+                "stage": "bidding",
+                "status": "In Progress",
+                "legal_stage": "Not Started",
+                "projected_exchange_date": "2025-08-15",
+                "projected_completion_date": "2025-10-30",
+                "funds_required": 2500000,
+                "created_at": "2025-06-15T10:30:00.000Z",
+                "updated_at": "2025-06-30T14:15:00.000Z"
+              }
+            ]
+          },
+          {
+            "stage": "negotiation",
+            "count": 1,
+            "deals": [
+              {
+                "id": "2",
+                "client_id": "1",
+                "title": "London Apartment Complex",
+                "type": "new_build",
+                "region": "London",
+                "builder": "Metropolitan Developments",
+                "units": 8,
+                "stage": "negotiation",
+                "status": "In Progress",
+                "legal_stage": "Searches In",
+                "projected_exchange_date": "2025-07-25",
+                "projected_completion_date": "2025-09-15",
+                "funds_required": 3200000,
+                "created_at": "2025-06-10T09:45:00.000Z",
+                "updated_at": "2025-06-28T11:20:00.000Z"
+              }
+            ]
+          }
+        ],
+        "total_funds_required": 0
+      }
+    },
+    {
+      "id": "2b1b390a-5585-42e3-8751-a68c5753fd14",
+      "client_id": "1",
+      "client_name": "Highbrook Investments",
+      "generated_at": "2025-07-02T13:10:00.535Z",
+      "period": "2025-07-02 - Weekly Report",
+      "stats": {
+        "total_units": 20,
+        "retrofit_units": 12,
+        "new_build_units": 8,
+        "total_deals": 2,
+        "deals_by_stage": [
+          {
+            "stage": "bidding",
+            "count": 1,
+            "deals": [
+              {
+                "id": "1",
+                "client_id": "1",
+                "title": "Yorkshire Property Portfolio",
+                "type": "retrofit",
+                "region": "Yorkshire",
+                "builder": "Premier Builders",
+                "units": 12,
+                "stage": "bidding",
+                "status": "In Progress",
+                "legal_stage": "Not Started",
+                "projected_exchange_date": "2025-08-15",
+                "projected_completion_date": "2025-10-30",
+                "funds_required": 2500000,
+                "created_at": "2025-06-15T10:30:00.000Z",
+                "updated_at": "2025-06-30T14:15:00.000Z"
+              }
+            ]
+          },
+          {
+            "stage": "negotiation",
+            "count": 1,
+            "deals": [
+              {
+                "id": "2",
+                "client_id": "1",
+                "title": "London Apartment Complex",
+                "type": "new_build",
+                "region": "London",
+                "builder": "Metropolitan Developments",
+                "units": 8,
+                "stage": "negotiation",
+                "status": "In Progress",
+                "legal_stage": "Searches In",
+                "projected_exchange_date": "2025-07-25",
+                "projected_completion_date": "2025-09-15",
+                "funds_required": 3200000,
+                "created_at": "2025-06-10T09:45:00.000Z",
+                "updated_at": "2025-06-28T11:20:00.000Z"
+              }
+            ]
+          }
+        ],
+        "total_funds_required": 0
+      }
+    },
+    {
+      "id": "6d6ac49d-e113-461e-bec1-7b50be75db28",
+      "client_id": "1",
+      "client_name": "Highbrook Investments",
+      "generated_at": "2025-07-02T13:10:06.954Z",
+      "period": "2025-07-02 - Weekly Report",
+      "stats": {
+        "total_units": 20,
+        "retrofit_units": 12,
+        "new_build_units": 8,
+        "total_deals": 2,
+        "deals_by_stage": [
+          {
+            "stage": "bidding",
+            "count": 1,
+            "deals": [
+              {
+                "id": "1",
+                "client_id": "1",
+                "title": "Yorkshire Property Portfolio",
+                "type": "retrofit",
+                "region": "Yorkshire",
+                "builder": "Premier Builders",
+                "units": 12,
+                "stage": "bidding",
+                "status": "In Progress",
+                "legal_stage": "Not Started",
+                "projected_exchange_date": "2025-08-15",
+                "projected_completion_date": "2025-10-30",
+                "funds_required": 2500000,
+                "created_at": "2025-06-15T10:30:00.000Z",
+                "updated_at": "2025-06-30T14:15:00.000Z"
+              }
+            ]
+          },
+          {
+            "stage": "negotiation",
+            "count": 1,
+            "deals": [
+              {
+                "id": "2",
+                "client_id": "1",
+                "title": "London Apartment Complex",
+                "type": "new_build",
+                "region": "London",
+                "builder": "Metropolitan Developments",
+                "units": 8,
+                "stage": "negotiation",
+                "status": "In Progress",
+                "legal_stage": "Searches In",
+                "projected_exchange_date": "2025-07-25",
+                "projected_completion_date": "2025-09-15",
+                "funds_required": 3200000,
+                "created_at": "2025-06-10T09:45:00.000Z",
+                "updated_at": "2025-06-28T11:20:00.000Z"
+              }
+            ]
+          }
+        ],
+        "total_funds_required": 0
+      }
+    }
+  ],
+  "notifications": []
+}

@@ -1,0 +1,22 @@
+{
+  "name": "smart-communication-pipeline-poc",
+  "version": "0.1.0",
+  "description": "Proof of concept for Smart Communication Pipelines",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm start",
+    "setup": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "communication",
+    "dashboard",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

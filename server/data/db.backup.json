@@ -1,0 +1,122 @@
+{
+  "deals": [
+    {
+      "id": "1",
+      "client_id": "1",
+      "title": "Yorkshire Property Portfolio",
+      "type": "retrofit",
+      "region": "Yorkshire",
+      "builder": "Premier Builders",
+      "units": 12,
+      "stage": "bidding",
+      "status": "In Progress",
+      "legal_stage": "Not Started",
+      "projected_exchange_date": "2025-08-15",
+      "projected_completion_date": "2025-10-30",
+      "funds_required": 2500000,
+      "created_at": "2025-06-15T10:30:00.000Z",
+      "updated_at": "2025-06-30T14:15:00.000Z"
+    },
+    {
+      "id": "2",
+      "client_id": "1",
+      "title": "London Apartment Complex",
+      "type": "new_build",
+      "region": "London",
+      "builder": "Metropolitan Developments",
+      "units": 8,
+      "stage": "negotiation",
+      "status": "In Progress",
+      "legal_stage": "Searches In",
+      "projected_exchange_date": "2025-07-25",
+      "projected_completion_date": "2025-09-15",
+      "funds_required": 3200000,
+      "created_at": "2025-06-10T09:45:00.000Z",
+      "updated_at": "2025-06-28T11:20:00.000Z"
+    },
+    {
+      "id": "3",
+      "client_id": "2",
+      "title": "Manchester Townhouse Development",
+      "type": "new_build",
+      "region": "Manchester",
+      "builder": "Northern Constructions",
+      "units": 6,
+      "stage": "legals",
+      "status": "In Progress",
+      "legal_stage": "ROT In",
+      "projected_exchange_date": "2025-07-10",
+      "projected_completion_date": "2025-08-30",
+      "funds_required": 1800000,
+      "created_at": "2025-06-05T14:20:00.000Z",
+      "updated_at": "2025-06-25T16:10:00.000Z"
+    },
+    {
+      "id": "4",
+      "client_id": "2",
+      "title": "Bristol Waterfront Properties",
+      "type": "retrofit",
+      "region": "Bristol",
+      "builder": "Coastal Renovations",
+      "units": 4,
+      "stage": "exchange",
+      "status": "Pending Funds",
+      "legal_stage": "Reviewed",
+      "projected_exchange_date": "2025-07-05",
+      "projected_completion_date": "2025-08-15",
+      "funds_required": 1500000,
+      "created_at": "2025-06-01T11:30:00.000Z",
+      "updated_at": "2025-06-20T13:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "client_id": "3",
+      "title": "Edinburgh Mixed-Use Development",
+      "type": "new_build",
+      "region": "Scotland",
+      "builder": "Highland Constructions",
+      "units": 10,
+      "stage": "bidding",
+      "status": "New",
+      "legal_stage": "Not Started",
+      "projected_exchange_date": "2025-09-20",
+      "projected_completion_date": "2025-12-15",
+      "funds_required": 2800000,
+      "created_at": "2025-06-25T08:45:00.000Z",
+      "updated_at": "2025-06-25T08:45:00.000Z"
+    }
+  ],
+  "clients": [
+    {
+      "id": "1",
+      "name": "Highbrook Investments",
+      "email": "reports@highbrook.example.com",
+      "report_frequency": "weekly"
+    },
+    {
+      "id": "2",
+      "name": "Cerberus Capital",
+      "email": "updates@cerberus.example.com",
+      "report_frequency": "weekly"
+    },
+    {
+      "id": "3",
+      "name": "Moorfield",
+      "email": "reports@moorfield.example.com",
+      "report_frequency": "weekly"
+    }
+  ],
+  "feedback": [
+    {
+      "id": "1",
+      "from_team": "Valuations",
+      "to_team": "Tech",
+      "issue_type": "Improvement",
+      "description": "Need faster loading times on property valuation page",
+      "status": "Pending",
+      "created_at": "2025-06-28T09:30:00.000Z"
+    }
+  ],
+  "reports": [],
+  "notifications": []
+}
