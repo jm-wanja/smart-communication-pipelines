@@ -52,128 +52,122 @@ The application is deployed on Render.com with the following configuration:
 - **Environment Variables**:
   - `REACT_APP_API_URL`: Set to the backend URL
 
-## Features
+## System Architecture
 
-### Client Communication Dashboard
-
-- Real-time deal tracking across various stages
-- Automated report generation
-- Visualization of portfolio metrics
-- Deal management interface
-
-### Internal Feedback System
-
-- AI-assisted feedback submission process
-- Multiple-choice suggestion generation
-- Ticket creation
-- Real-time feedback status tracking
-
-## Technologies Used
-
-- **Frontend**: React, Material-UI, Chart.js
-- **Backend**: Node.js, Express
-- **Database**: LowDB (JSON file-based database for demo purposes)
-- **Real-time Updates**: Socket.IO
-- **Deployment**: Render.com
-
-## Setup Instructions
-
-### Prerequisites
-
-- Node.js (version 14 or higher)
-- npm (comes with Node.js)
-
-### Installation
-
-1. Clone the repository
-2. Navigate to the project directory:
-
-   ```bash
-   cd poc
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   # Install all dependencies (both client and server)
-   npm run setup
-
-   # Or install them separately
-   cd server && npm install
-   cd ../client && npm install
-   ```
-
-### Running the Application
-
-#### Method 1: Running separately (recommended for development)
-
-```bash
-# Start the backend server (runs on port 5001)
-cd server
-npm start
-
-# In a new terminal, start the frontend (runs on port 3000)
-cd client
-npm start
+```ascii
+                                 +------------------+
+                                 |                  |
+                                 |  Material UI     |
+                                 |  React Components|
+                                 |                  |
+                                 +---------+--------+
+                                           |
++--------------------+           +---------v-----------+         +------------------+
+|                    |           |                     |         |                  |
+|   Socket.IO Client |<--------->|  React Application  |<------->|  Axios HTTP      |
+|   (Real-time)      |           |  (Frontend)         |         |  Client          |
+|                    |           |                     |         |                  |
++--------------------+           +---------+-----------+         +------------------+
+                                           |
+                                           |
+                             +-------------v--------------+
+                             |                            |
+                             |     Express.js API         |
+                             |     (Backend)              |
+                             |                            |
+                             +--------------+-------------+
+                                            |
+              +--------------------+        |        +--------------------+
+              |                    |        |        |                    |
+              |  Socket.IO Server  |<-------+------->|  LowDB JSON        |
+              |  (Real-time)       |                 |  Database          |
+              |                    |                 |                    |
+              +--------------------+                 +--------------------+
 ```
-
-#### Method 2: Using the convenience script
-
-```bash
-# From the project root
-npm start
-```
-
-This will:
-
-- Start the backend server on port 5001
-- Launch the frontend on port 3000
-- Open the application in your default web browser
-
-### Potential Issues and Solutions
-
-If you encounter port conflicts:
-
-- Server port (5001): Check if something is already running on this port with `lsof -i :5001`
-- Client port (3000): React will usually offer to use a different port automatically
-
-If you get CORS errors:
-
-- Ensure you're using the correct ports (backend: 5001, frontend: 3000)
-- Check that the CORS configuration in server.js allows your frontend origin
-
-## Demo Guide
-
-### Client Dashboard Demo
-
-1. Navigate to the Dashboard to see an overview of all deals
-2. Go to the Deals page to view, filter, and manage deals
-3. Add a new deal to see real-time updates across the application
-4. Visit the Client Reports page to generate and view client reports for demo clients (Example Fund A, Example Fund B, etc.)
-
-### Internal Feedback Demo
-
-1. Go to the Internal Feedback page
-2. Click "Submit Feedback" to start the process
-3. Enter a description of an issue, improvement, or feature request
-4. See how the AI generates multiple options to clarify the feedback
-5. Select an option and submit the feedback
-6. Watch as the feedback appears in the list with real-time updates
 
 ## Project Structure
 
 ```text
 poc/
-├── client/               # React frontend
-│   ├── public/           # Static files
-│   └── src/              # React source code
-│       ├── components/   # Reusable UI components
-│       └── pages/        # Application pages
-├── server/               # Node.js backend
-│   ├── data/             # JSON database
-│   └── server.js         # Express server
-└── package.json          # Project configuration
+├── client/                  # React frontend
+│   ├── public/              # Static files
+│   │   ├── index.html       # Main HTML file
+│   │   └── ...              # Other static assets
+│   └── src/                 # React source code
+│       ├── components/      # Reusable UI components
+│       │   ├── Navbar.js    # Top navigation bar
+│       │   ├── Sidebar.js   # Side navigation menu
+│       │   └── ...          # Other components
+│       ├── pages/           # Application pages
+│       │   ├── Dashboard.js # Main dashboard
+│       │   ├── Deals.js     # Deals management
+│       │   └── ...          # Other pages
+│       ├── utils/           # Utility functions
+│       │   └── api.js       # API client configuration
+│       └── App.js           # Main application component
+├── server/                  # Node.js backend
+│   ├── data/                # JSON database
+│   │   └── db.json          # Database file
+│   ├── public/              # Static files served by Express
+│   │   └── ...              # Static HTML and assets
+│   └── server.js            # Express server & API endpoints
+└── package.json             # Project configuration
 ```
+
+## Features
+
+### Client Communication Dashboard
+
+- Real-time deal tracking across various stages (bidding, negotiation, legals, exchange, completion)
+- Automated weekly report generation for investment funds
+- Visualization of portfolio metrics (units by type, funds required, deal stages)
+- Comprehensive deal management interface with filtering capabilities
+- Client management with configurable reporting preferences
+
+### Internal Feedback System
+
+- AI-assisted feedback submission process with smart categorization
+- Multiple-choice suggestion generation for better context clarity
+- Ticket creation with automated routing to relevant teams
+- Real-time feedback status tracking and updates
+- Historical feedback analysis capabilities
+
+## Technology Stack
+
+### Frontend
+
+- **React 18**: Core UI library
+- **Material-UI**: Component library for consistent design
+- **Chart.js**: Data visualization
+- **Socket.IO Client**: Real-time communication
+- **React Router**: Navigation and routing
+- **Axios**: HTTP client for API requests
+
+### Backend
+
+- **Node.js**: JavaScript runtime
+- **Express**: Web framework
+- **Socket.IO**: Real-time bi-directional communication
+- **LowDB**: JSON file-based database (for demo purposes)
+- **UUID**: Unique identifier generation
+- **Morgan**: HTTP request logger middleware
+
+### Deployment
+
+- **Render.com**: Cloud hosting platform
+- **Git**: Version control
+- **Environment Variables**: Configuration management
+
+## Demo Features
+
+The POC includes several features specifically designed for demonstration:
+
+- **Pre-populated Data**: Sample deals, clients, and feedback entries
+- **Real-time Updates**: All changes are instantly reflected across all connected clients
+- **Interactive UI**: Add deals, generate reports, and submit feedback with immediate visual feedback
+- **Visual Dashboards**: Charts and graphs to visualize deal statistics
+- **Simulated AI Integration**: Smart feedback categorization and multiple-choice generation
+- **Example Investment Funds**: System includes multiple anonymous example investment funds with ability to add more
 
 ## Extending the POC
 
@@ -182,8 +176,10 @@ This POC is designed to be extended in several ways:
 1. **Authentication**: Add user login and role-based permissions
 2. **Notifications**: Implement email notifications for reports and feedback
 3. **Database**: Replace LowDB with a production database like MongoDB or PostgreSQL
-4. **Integration**: Connect with real systems like Pipedrive
+4. **Integration**: Connect with real CRM systems
 5. **Advanced Analytics**: Add more sophisticated reporting capabilities
+6. **Mobile Application**: Develop a companion mobile app for on-the-go access
+7. **AI Enhancement**: Implement actual NLP for smarter feedback processing
 
 ## Technical Details
 
@@ -197,15 +193,19 @@ The server exposes the following key endpoints:
 - `GET /api/clients` - Get all clients
 - `POST /api/clients` - Create a new client
 - `GET /api/reports/:clientId` - Get reports for a specific client
-- `POST /api/reports/:clientId` - Generate a new report
+- `POST /api/reports/generate/:clientId` - Generate a new report
+- `GET /api/feedback` - Get all feedback entries
+- `POST /api/feedback` - Submit new feedback
+- `PUT /api/feedback/:id` - Update feedback status
 
-### Real-Time Updates
+### Real-Time Events
 
 Socket.IO is used for real-time updates. The following events are emitted:
 
-- `deal_updated` - When a deal is created or updated
+- `deal_created`, `deal_updated` - When a deal is created or updated
+- `client_created`, `client_updated` - When a client is created or updated
 - `report_generated` - When a new report is generated
-- `feedback_submitted` - When new feedback is submitted
+- `feedback_created`, `feedback_updated` - When feedback is submitted or updated
 
 ## Notes for Presentation
 
