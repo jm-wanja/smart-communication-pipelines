@@ -106,25 +106,25 @@
   "clients": [
     {
       "id": "1",
-      "name": "Highbrook Investments",
-      "email": "reports@highbrook.example.com",
+      "name": "Example Fund A",
+      "email": "reports@examplefunda.example.com",
       "report_frequency": "weekly"
     },
     {
       "id": "2",
-      "name": "Cerberus Capital",
-      "email": "updates@cerberus.example.com",
+      "name": "Example Fund B",
+      "email": "updates@examplefundb.example.com",
       "report_frequency": "weekly"
     },
     {
       "id": "3",
-      "name": "Moorfield",
-      "email": "reports@moorfield.example.com",
+      "name": "Example Fund C",
+      "email": "reports@examplefundc.example.com",
       "report_frequency": "weekly"
     },
     {
       "id": "ed558624-7444-4c10-9941-e3eee9ee3a8a",
-      "name": "a tester client",
+      "name": "Test Client",
       "email": "tester@tester.example.com",
       "report_frequency": "weekly"
     }

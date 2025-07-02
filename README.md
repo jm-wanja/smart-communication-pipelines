@@ -149,7 +149,7 @@ If you get CORS errors:
 1. Navigate to the Dashboard to see an overview of all deals
 2. Go to the Deals page to view, filter, and manage deals
 3. Add a new deal to see real-time updates across the application
-4. Visit the Client Reports page to generate and view client reports
+4. Visit the Client Reports page to generate and view client reports for demo clients (Example Fund A, Example Fund B, etc.)
 
 ### Internal Feedback Demo
 

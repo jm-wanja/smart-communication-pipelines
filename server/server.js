@@ -87,14 +87,14 @@ db.defaults({
   clients: [
     {
       id: '1',
-      name: 'Highbrook Investments',
-      email: 'reports@highbrook.example.com',
+      name: 'Example Fund A',
+      email: 'reports@examplefunda.example.com',
       report_frequency: 'weekly',
     },
     {
       id: '2',
-      name: 'Cerberus Capital',
-      email: 'updates@cerberus.example.com',
+      name: 'Example Fund B',
+      email: 'updates@examplefundb.example.com',
       report_frequency: 'weekly',
     },
   ],

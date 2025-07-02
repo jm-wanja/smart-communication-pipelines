@@ -54,7 +54,7 @@ If you encounter any issues with the deployed application:
 2. **Add a New Deal**
    - Click the "Add New Deal" button in the top right
    - Fill in the form with the following details:
-     - Client: Highbrook Investments
+     - Client: Example Fund A
      - Deal Title: Edinburgh City Center Apartments
      - Type: New Build
      - Region: Edinburgh
@@ -95,7 +95,7 @@ If you encounter any issues with the deployed application:
 1. **Navigate to Client Reports**
 
    - Click "Client Reports" in the sidebar
-   - It will default to showing Highbrook Investments
+   - It will default to showing Example Fund A
 
 2. **Generate a New Report**
 
@@ -117,12 +117,12 @@ If you encounter any issues with the deployed application:
 
 5. **View Another Client's Report**
 
-   - Use the navigation to switch to Cerberus Capital's report
+   - Use the navigation to switch to Example Fund B's report
    - Generate a report for this client as well
    - Compare the differences in portfolio metrics
 
-6. **View Moorfield's Report**
-   - Switch to Moorfield's report
+6. **View Example Fund C's Report**
+   - Switch to Example Fund C's report
    - Point out the Edinburgh Mixed-Use Development deal
    - Explain how the system is designed to easily accommodate new clients
 
@@ -131,14 +131,14 @@ If you encounter any issues with the deployed application:
 1. **Navigate to Clients Page**
 
    - Click "Clients" in the sidebar
-   - Show the list of all clients: Highbrook Investments, Cerberus Capital, and Moorfield
+   - Show the list of all clients: Example Fund A, Example Fund B, and Example Fund C
 
 2. **Add a New Client**
 
    - Click the "Add New Client" button
    - Fill in the form:
-     - Name: Blackstone Real Estate
-     - Email: (use reports@ followed by blackstone.example.com)
+     - Name: Example Fund D
+     - Email: (use reports@ followed by examplefundd.example.com)
      - Report Frequency: Weekly
    - Click "Add Client"
    - Show how the new client appears in the list immediately
