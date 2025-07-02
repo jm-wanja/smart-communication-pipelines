@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Grid, Button, Card, CardContent, CircularProgress } from '@mui/material';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from '../utils/api';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title } from 'chart.js';
 import { Pie, Bar } from 'react-chartjs-2';
 import BusinessIcon from '@mui/icons-material/Business';
@@ -32,7 +32,7 @@ function Dashboard({ socket }) {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const response = await axios.get('/api/deals');
+        const response = await api.get('/api/deals');
         setDeals(response.data);
         calculateStats(response.data);
         setLoading(false);

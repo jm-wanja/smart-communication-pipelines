@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, TextField, FormControl, InputLabel, Select, MenuItem, Grid, CircularProgress, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 
 function AddDeal({ socket }) {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ function AddDeal({ socket }) {
   useEffect(() => {
     const fetchClients = async () => {
       try {
-        const response = await axios.get('/api/clients');
+        const response = await api.get('/api/clients');
         setClients(response.data);
         if (response.data.length > 0) {
           setFormData((prev) => ({ ...prev, client_id: response.data[0].id }));
@@ -51,7 +51,7 @@ function AddDeal({ socket }) {
     setLoading(true);
 
     try {
-      await axios.post('/api/deals', formData);
+      await api.post('/api/deals', formData);
       setLoading(false);
       navigate('/deals');
     } catch (error) {

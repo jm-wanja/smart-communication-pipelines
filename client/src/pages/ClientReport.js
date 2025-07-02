@@ -26,7 +26,7 @@ import {
   DialogActions,
 } from '@mui/material';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import EmailIcon from '@mui/icons-material/Email';
@@ -75,9 +75,9 @@ function ClientReport({ socket }) {
       try {
         // Fetch client data, deals, and reports
         const [clientsResponse, dealsResponse, reportsResponse] = await Promise.all([
-          axios.get('/api/clients'),
-          axios.get('/api/deals'),
-          axios.get(`/api/reports/${clientId}`),
+          api.get('/api/clients'),
+          api.get('/api/deals'),
+          api.get(`/api/reports/${clientId}`),
         ]);
 
         const clientData = clientsResponse.data.find((c) => c.id === clientId);
@@ -100,8 +100,8 @@ function ClientReport({ socket }) {
 
   const handleGenerateReport = async () => {
     try {
-      await axios.post(`/api/reports/generate/${clientId}`);
-      const response = await axios.get(`/api/reports/${clientId}`);
+      await api.post(`/api/reports/generate/${clientId}`);
+      const response = await api.get(`/api/reports/${clientId}`);
       setReports(response.data);
     } catch (error) {
       console.error('Error generating report:', error);

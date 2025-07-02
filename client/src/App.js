@@ -17,7 +17,7 @@ import EditDeal from './pages/EditDeal';
 import Clients from './pages/Clients';
 
 // Initialize socket connection
-const socket = io('http://localhost:5001', {
+const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:5001', {
   withCredentials: true,
 });
 

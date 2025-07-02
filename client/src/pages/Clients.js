@@ -19,7 +19,7 @@ import {
   MenuItem,
   CircularProgress,
 } from '@mui/material';
-import axios from 'axios';
+import api from '../utils/api';
 import { useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -58,7 +58,7 @@ function Clients({ socket }) {
 
   const fetchClients = async () => {
     try {
-      const response = await axios.get('/api/clients');
+      const response = await api.get('/api/clients');
       setClients(response.data);
       setLoading(false);
     } catch (error) {
@@ -103,10 +103,10 @@ function Clients({ socket }) {
     try {
       if (editingClient) {
         // Update existing client
-        await axios.put(`/api/clients/${editingClient.id}`, formData);
+        await api.put(`/api/clients/${editingClient.id}`, formData);
       } else {
         // Add new client
-        await axios.post('/api/clients', formData);
+        await api.post('/api/clients', formData);
       }
       handleCloseDialog();
     } catch (error) {

@@ -26,7 +26,7 @@ import {
   DialogActions,
   Alert,
 } from '@mui/material';
-import axios from 'axios';
+import api from '../utils/api';
 import FeedbackIcon from '@mui/icons-material/Feedback';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import EnhancementIcon from '@mui/icons-material/AutoFixHigh';
@@ -52,7 +52,7 @@ function InternalFeedback({ socket }) {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await axios.get('/api/feedback');
+        const response = await api.get('/api/feedback');
         setFeedbackItems(response.data);
         setLoading(false);
       } catch (error) {
@@ -132,7 +132,7 @@ function InternalFeedback({ socket }) {
 
   const handleSubmitFeedback = async () => {
     try {
-      await axios.post('/api/feedback', formData);
+      await api.post('/api/feedback', formData);
       setSuccess('Feedback submitted successfully');
       setTimeout(() => {
         setDialogOpen(false);

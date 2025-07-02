@@ -18,7 +18,7 @@ import {
   Tooltip,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../utils/api';
 import AddIcon from '@mui/icons-material/Add';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import SearchIcon from '@mui/icons-material/Search';
@@ -40,7 +40,7 @@ function Deals() {
   useEffect(() => {
     const fetchDeals = async () => {
       try {
-        const response = await axios.get('/api/deals');
+        const response = await api.get('/api/deals');
         setDeals(response.data);
         setFilteredDeals(response.data);
         setLoading(false);
