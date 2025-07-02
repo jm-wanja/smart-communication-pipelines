@@ -1,7 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
-const socketIo = require('socket.io');
+const socketIo = reconst app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: ["https://smart-communication-pipelines-client.onrender.com", "http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false
+  },
+});ket.io');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const morgan = require('morgan');
@@ -117,33 +126,35 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: '*', // Allow requests from any origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    origin: ["https://smart-communication-pipelines-client.onrender.com", "http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false
   },
 });
 
-// Middleware
+// Middleware for debugging requests
 app.use((req, res, next) => {
-  console.log('Incoming request from origin:', req.headers.origin);
+  console.log(`Request: ${req.method} ${req.url} from ${req.headers.origin}`);
   next();
 });
 
-app.use(
-  cors({
-    origin: '*', // Allow requests from any origin
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
-
-// Add additional headers to ensure CORS works
+// Explicit CORS configuration
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  // Allow both the production frontend and localhost for development
+  const allowedOrigins = ['https://smart-communication-pipelines-client.onrender.com', 'http://localhost:3000'];
+  const origin = req.headers.origin;
+
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    // If the origin is not in our list, still allow it for development purposes
+    res.setHeader('Access-Control-Allow-Origin', '*');
+  }
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'false');
 
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
@@ -167,6 +178,7 @@ io.on('connection', (socket) => {
 
 // Routes
 app.get('/api/deals', (req, res) => {
+  console.log('GET /api/deals - Returning data');
   const deals = db.get('deals').value();
   res.json(deals);
 });

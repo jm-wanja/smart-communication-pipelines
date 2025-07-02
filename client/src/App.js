@@ -22,6 +22,21 @@ console.log('Connecting to Socket.IO server at:', socketUrl);
 const socket = io(socketUrl, {
   withCredentials: false,
   transports: ['websocket', 'polling'],
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000,
+});
+
+// Add socket connection event listeners for debugging
+socket.on('connect', () => {
+  console.log('Socket connected successfully!');
+});
+
+socket.on('connect_error', (error) => {
+  console.error('Socket connection error:', error);
+});
+
+socket.on('error', (error) => {
+  console.error('Socket error:', error);
 });
 
 function App() {
