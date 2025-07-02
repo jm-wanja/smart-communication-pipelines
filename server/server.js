@@ -1,16 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
-const socketIo = reconst app = express();
-const server = http.createServer(app);
-const io = socketIo(server, {
-  cors: {
-    origin: ["https://smart-communication-pipelines-client.onrender.com", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false
-  },
-});ket.io');
+const socketIo = require('socket.io');
 const low = require('lowdb');
 const FileSync = require('lowdb/adapters/FileSync');
 const morgan = require('morgan');
@@ -124,48 +115,75 @@ db.defaults({
 
 const app = express();
 const server = http.createServer(app);
+
+// Define our allowed origins
+const allowedOrigins = ['https://smart-communication-pipelines-client.onrender.com', 'http://localhost:3000'];
+
+// Configure Socket.IO with CORS
 const io = socketIo(server, {
   cors: {
-    origin: ["https://smart-communication-pipelines-client.onrender.com", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: false
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
   },
 });
 
 // Middleware for debugging requests
 app.use((req, res, next) => {
-  console.log(`Request: ${req.method} ${req.url} from ${req.headers.origin}`);
+  console.log(`Request: ${req.method} ${req.url} from ${req.headers.origin || 'unknown'}`);
+  console.log('Request headers:', JSON.stringify(req.headers, null, 2));
   next();
 });
 
-// Explicit CORS configuration
+// CORS middleware for all routes
 app.use((req, res, next) => {
-  // Allow both the production frontend and localhost for development
-  const allowedOrigins = ['https://smart-communication-pipelines-client.onrender.com', 'http://localhost:3000'];
   const origin = req.headers.origin;
 
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    // If the origin is not in our list, still allow it for development purposes
-    res.setHeader('Access-Control-Allow-Origin', '*');
-  }
+  // Allow all origins during development/testing
+  res.header('Access-Control-Allow-Origin', '*');
 
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Credentials', 'false');
+  // If we want to restrict to specific origins later, uncomment this:
+  // if (allowedOrigins.includes(origin)) {
+  //   res.header('Access-Control-Allow-Origin', origin);
+  // }
+
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Max-Age', '86400');
 
   // Handle preflight requests
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    console.log('Responding to OPTIONS preflight request');
+    res.status(200).end();
+    return;
   }
 
   next();
 });
 
+// Also keep the cors middleware for compatibility
+app.use(
+  cors({
+    origin: '*', // Allow all origins for now to simplify debugging
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+    credentials: true,
+    maxAge: 86400, // Cache preflight request for 1 day
+  })
+);
+
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Basic health check endpoint for testing CORS
+app.get('/healthcheck', (req, res) => {
+  res.json({ status: 'ok', message: 'Server is running', cors: 'enabled' });
+});
 
 // Socket connection
 io.on('connection', (socket) => {
@@ -361,6 +379,12 @@ app.get('/api/reports/:clientId', (req, res) => {
   const clientId = req.params.clientId;
   const reports = db.get('reports').filter({ client_id: clientId }).value();
   res.json(reports);
+});
+
+// Fallback route for API endpoints not found - will return 404 but with proper CORS headers
+app.all('/api/*', (req, res) => {
+  console.log(`API endpoint not found: ${req.method} ${req.url}`);
+  res.status(404).json({ error: 'API endpoint not found' });
 });
 
 // Server start

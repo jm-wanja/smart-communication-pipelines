@@ -2,7 +2,18 @@
 
 This document provides step-by-step instructions for demonstrating the Smart Communication Pipelines POC application. Follow these steps in order to showcase all key features of the system.
 
-## Initial Setup
+## Accessing the Deployed Application
+
+The application is now deployed and can be accessed at:
+
+- **Frontend**: [https://smart-communication-pipelines-client.onrender.com](https://smart-communication-pipelines-client.onrender.com)
+- **Backend**: [https://smart-communication-pipelines.onrender.com](https://smart-communication-pipelines.onrender.com)
+
+You can start the demo directly from the deployed frontend URL without any setup required.
+
+## Local Development Setup (Optional)
+
+If you prefer to run the application locally:
 
 1. Ensure the application is running:
 
@@ -13,7 +24,22 @@ This document provides step-by-step instructions for demonstrating the Smart Com
 
    This will start both the backend server and frontend application.
 
-2. Open the application in your browser: http://localhost:3000
+2. Open the application in your browser: [http://localhost:3000](http://localhost:3000)
+
+## Troubleshooting
+
+If you encounter any issues with the deployed application:
+
+1. **CORS Issues**: If API calls are failing, you can check CORS configuration by visiting:
+
+   - [https://smart-communication-pipelines.onrender.com/cors-test.html](https://smart-communication-pipelines.onrender.com/cors-test.html)
+   - This test page will help diagnose if CORS is properly configured.
+
+2. **API Health Check**: You can verify the backend API is running by visiting:
+
+   - [https://smart-communication-pipelines.onrender.com/healthcheck](https://smart-communication-pipelines.onrender.com/healthcheck)
+
+3. **Socket Connection**: The app should establish a real-time socket connection automatically. Check the browser console for any connection errors.
 
 ## Demo Flow
 

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #f5f5f5;
+      white-space: pre-wrap;
+    }
+    .success {
+      border-color: green;
+      background-color: #e6ffe6;
+    }
+    .error {
+      border-color: red;
+      background-color: #ffe6e6;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 16px;
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0055aa;
+    }
+  </style>
+</head>
+<body>
+  <h1>API CORS Test</h1>
+  <p>This page tests CORS configuration for the API endpoints.</p>
+
+  <div>
+    <button id="testHealthcheck">Test Healthcheck</button>
+    <button id="testDeals">Test Deals API</button>
+    <button id="testClients">Test Clients API</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script>
+    // Function to add result to the page
+    function showResult(endpoint, success, data, error = null) {
+      const resultsDiv = document.getElementById('results');
+      const resultDiv = document.createElement('div');
+      resultDiv.className = `result ${success ? 'success' : 'error'}`;
+
+      let content = `<strong>${endpoint}:</strong> ${success ? 'Success' : 'Error'}\n`;
+      if (success) {
+        content += `Data: ${JSON.stringify(data, null, 2)}`;
+      } else {
+        content += `Error: ${error}\n`;
+        if (data) {
+          content += `Details: ${JSON.stringify(data, null, 2)}`;
+        }
+      }
+
+      resultDiv.textContent = content;
+      resultsDiv.prepend(resultDiv);
+    }
+
+    // Detect backend URL
+    const apiUrl = window.location.origin;
+
+    // Test healthcheck endpoint
+    document.getElementById('testHealthcheck').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${apiUrl}/healthcheck`);
+        if (response.ok) {
+          const data = await response.json();
+          showResult('Healthcheck', true, data);
+        } else {
+          showResult('Healthcheck', false, null, `Status: ${response.status}`);
+        }
+      } catch (error) {
+        showResult('Healthcheck', false, null, error.message);
+      }
+    });
+
+    // Test deals API
+    document.getElementById('testDeals').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/deals`);
+        if (response.ok) {
+          const data = await response.json();
+          showResult('Deals API', true, data.slice(0, 2)); // Show just first 2 deals
+        } else {
+          showResult('Deals API', false, null, `Status: ${response.status}`);
+        }
+      } catch (error) {
+        showResult('Deals API', false, null, error.message);
+      }
+    });
+
+    // Test clients API
+    document.getElementById('testClients').addEventListener('click', async () => {
+      try {
+        const response = await fetch(`${apiUrl}/api/clients`);
+        if (response.ok) {
+          const data = await response.json();
+          showResult('Clients API', true, data);
+        } else {
+          showResult('Clients API', false, null, `Status: ${response.status}`);
+        }
+      } catch (error) {
+        showResult('Clients API', false, null, error.message);
+      }
+    });
+  </script>
+</body>
+</html>

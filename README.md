@@ -5,14 +5,23 @@ This is a proof of concept (POC) for a Smart Communication Pipelines solution th
 1. **Client Communication Automation**: A dashboard that visualizes deal progress and can generate reports automatically for clients.
 2. **Internal Feedback Mechanism**: A streamlined process for team members to submit feedback with AI-assisted clarification.
 
+## Deployed Application
+
+The application is deployed and can be accessed at:
+
+- **Frontend**: [https://smart-communication-pipelines-client.onrender.com](https://smart-communication-pipelines-client.onrender.com)
+- **Backend**: [https://smart-communication-pipelines.onrender.com](https://smart-communication-pipelines.onrender.com)
+
+For detailed demo instructions, please see [DEMO_INSTRUCTIONS.md](./DEMO_INSTRUCTIONS.md).
+
 ## Quick Start for Developers
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/jm-wanja/smart-communication-pipelines.git
 
 # Navigate to the project directory
-cd hackathon-team4-poc/poc
+cd smart-communication-pipelines
 
 # Install dependencies for both client and server
 npm run setup
@@ -25,6 +34,23 @@ npm start
 cd ../client
 npm start
 ```
+
+## Deployment Information
+
+The application is deployed on Render.com with the following configuration:
+
+### Backend (Web Service)
+
+- **Build Command**: `cd server && npm install`
+- **Start Command**: `cd server && node server.js`
+- **Environment Variables**: None required (using in-memory database)
+
+### Frontend (Static Site)
+
+- **Build Command**: `cd client && npm install && npm run build`
+- **Publish Directory**: `client/build`
+- **Environment Variables**:
+  - `REACT_APP_API_URL`: Set to the backend URL
 
 ## Features
 
@@ -48,6 +74,7 @@ npm start
 - **Backend**: Node.js, Express
 - **Database**: LowDB (JSON file-based database for demo purposes)
 - **Real-time Updates**: Socket.IO
+- **Deployment**: Render.com
 
 ## Setup Instructions
 
