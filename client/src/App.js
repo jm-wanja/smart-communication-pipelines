@@ -17,8 +17,11 @@ import EditDeal from './pages/EditDeal';
 import Clients from './pages/Clients';
 
 // Initialize socket connection
-const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:5001', {
-  withCredentials: true,
+const socketUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+console.log('Connecting to Socket.IO server at:', socketUrl);
+const socket = io(socketUrl, {
+  withCredentials: false,
+  transports: ['websocket', 'polling'],
 });
 
 function App() {
