@@ -5,12 +5,16 @@ This is a proof of concept (POC) for a Smart Communication Pipelines solution th
 1. **Client Communication Automation**: A dashboard that visualizes deal progress and can generate reports automatically for clients.
 2. **Internal Feedback Mechanism**: A streamlined process for team members to submit feedback with AI-assisted clarification.
 
-## Deployed Application
+## 🚀 Live Demo
 
-The application is deployed and can be accessed at:
+**Try the application now!**
 
-- **Frontend**: [https://smart-communication-pipelines-client.onrender.com](https://smart-communication-pipelines-client.onrender.com)
-- **Backend**: [https://smart-communication-pipelines.onrender.com](https://smart-communication-pipelines.onrender.com)
+👉 **[OPEN LIVE DEMO](https://smart-communication-pipelines-client.onrender.com)** 👈
+
+- **Frontend URL**: [https://smart-communication-pipelines-client.onrender.com](https://smart-communication-pipelines-client.onrender.com)
+- **Backend API**: [https://smart-communication-pipelines.onrender.com](https://smart-communication-pipelines.onrender.com)
+
+No setup required - just click the link above to see the application in action.
 
 For detailed demo instructions, please see [DEMO_INSTRUCTIONS.md](./DEMO_INSTRUCTIONS.md).
 
@@ -84,6 +88,18 @@ The application is deployed on Render.com with the following configuration:
               |                    |                 |                    |
               +--------------------+                 +--------------------+
 ```
+
+## Quick Demo Guide
+
+Want to try the live demo but don't have time to read all the instructions? Here's a quick path to experience the key features:
+
+1. **Open the [Live Demo](https://smart-communication-pipelines-client.onrender.com)**
+2. **Explore the Dashboard**: See real-time metrics and deal statistics
+3. **View Deals**: Click "Deals" in the sidebar to see all property deals
+4. **Generate a Report**: Click "Client Reports" in the sidebar, then click "Generate New Report"
+5. **Submit Feedback**: Click "Internal Feedback" in the sidebar, then "Submit Feedback"
+
+The application is pre-populated with sample data, so you can immediately interact with all features without setup.
 
 ## Project Structure
 
